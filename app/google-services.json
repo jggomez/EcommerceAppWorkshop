@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "921807500244",
+    "firebase_url": "https://appecommerceworkshop.firebaseio.com",
+    "project_id": "appecommerceworkshop",
+    "storage_bucket": "appecommerceworkshop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921807500244:android:02b50db57bb5ff41",
+        "android_client_info": {
+          "package_name": "co.devhack.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921807500244-k9att3ae0qbs7cgukchu7c3ognm658e0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.devhack.myapplication",
+            "certificate_hash": "f4e25cc6f492af7fc2309b5c2405a0e641f7e20c"
+          }
+        },
+        {
+          "client_id": "921807500244-a8ch0eq3827c9di491tsvd138982blej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoJWIc2Vx_ONZzkjrUe6hPEfKQWyDITeM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921807500244-a8ch0eq3827c9di491tsvd138982blej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

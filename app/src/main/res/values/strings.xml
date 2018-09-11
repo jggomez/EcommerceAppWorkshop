@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="create_account">Create your Account</string>
+    <string name="names">Names</string>
+    <string name="cellphone">Cell Phone Number</string>
+    <string name="field_required">Este campo es requerido</string>
+    <string name="long_max">Es muy largo el texto</string>
+    <string name="wait_please">Espera un momento por favor</string>
+    <string name="loading">Cargando</string>
+    <string name="lbl_signup">Sign up</string>
+    <string name="lbl_verification_email">Verification email sent to email</string>
+</resources>
