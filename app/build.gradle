@@ -58,6 +58,11 @@ dependencies {
     // alternately - if using Java8, use the following instead of compiler
     implementation "android.arch.lifecycle:common-java8:$rootProject.ext.lifecycle_version"
 
+    //facebook
+    implementation 'com.facebook.android:facebook-login:[4,5)'
+
+    // Play services auth
+    implementation "com.google.android.gms:play-services-auth:$rootProject.ext.playServices"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

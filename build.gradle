@@ -39,4 +39,5 @@ ext {
     lifecycle_version = "1.1.1"
     rxAndroid = "2.0.2"
     rxJava = "2.1.10"
+    playServices = "15.0.1"
 }

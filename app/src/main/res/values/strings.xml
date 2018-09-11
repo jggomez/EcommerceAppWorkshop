@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Ecommerce App DevHack</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>
@@ -11,5 +11,10 @@
     <string name="wait_please">Espera un momento por favor</string>
     <string name="loading">Cargando</string>
     <string name="lbl_signup">Sign up</string>
-    <string name="lbl_verification_email">Verification email sent to email</string>
+    <string name="lbl_verification_email">Verification mail sent to email</string>
+
+    <string name="facebook_app_id">415914175535570</string>
+    <string name="fb_login_protocol_scheme">fb415914175535570</string>
+    <string name="error_auth_facebook">Error Auth Facebook</string>
+
 </resources>

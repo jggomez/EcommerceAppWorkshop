@@ -19,6 +19,23 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public Observable<User> logIn(String email, String password) {
-        return null;
+        return firebaseUserRepository.logIn(email, password)
+                .map(firebaseUser -> {
+                    User user = new User();
+                    user.setEmail(firebaseUser.getEmail());
+                    user.setNames(firebaseUser.getDisplayName());
+                    return user;
+                });
+    }
+
+    @Override
+    public Observable<User> logInFacebook(String token) {
+        return firebaseUserRepository.logInCredential(token)
+                .map(firebaseUser -> {
+                    User user = new User();
+                    user.setEmail(firebaseUser.getEmail());
+                    user.setNames(firebaseUser.getDisplayName());
+                    return user;
+                });
     }
 }
