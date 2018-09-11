@@ -75,6 +75,12 @@ public class RegisterActivity extends BaseActivity
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        userPresenter.dispose();
+    }
+
+    @Override
     public int getLayoutId() {
         return R.layout.activity_register;
     }
