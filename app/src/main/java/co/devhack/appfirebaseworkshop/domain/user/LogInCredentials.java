@@ -24,7 +24,7 @@ public class LogInCredentials extends UseCase<User> {
 
     @Override
     protected Observable<User> crearObservableCasoUso() {
-        return userRepository.logInFacebook(this.token);
+        return userRepository.logInCrendentials(this.token);
     }
 
 }

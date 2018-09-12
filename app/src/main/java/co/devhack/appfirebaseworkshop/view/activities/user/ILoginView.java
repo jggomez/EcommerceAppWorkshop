@@ -9,4 +9,6 @@ public interface ILoginView extends IView {
     void gotoProducts();
 
     void gotoSignUp();
+
+    void showMessageEmailLinkSent();
 }

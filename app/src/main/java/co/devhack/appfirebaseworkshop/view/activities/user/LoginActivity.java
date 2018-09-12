@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.crashlytics.android.Crashlytics;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -23,6 +24,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import co.devhack.appfirebaseworkshop.R;
 import co.devhack.appfirebaseworkshop.domain.user.LogInCredentials;
+import co.devhack.appfirebaseworkshop.domain.user.LogInLinkEmail;
 import co.devhack.appfirebaseworkshop.domain.user.LogInUser;
 import co.devhack.appfirebaseworkshop.repository.user.FirebaseUserRepository;
 import co.devhack.appfirebaseworkshop.repository.user.UserRepository;
@@ -79,7 +81,13 @@ public class LoginActivity extends BaseActivity implements
                         AndroidSchedulers.mainThread(),
                         new UserRepository(
                                 new FirebaseUserRepository()
-                        )));
+                        )),
+                new LogInLinkEmail(Schedulers.io(),
+                        AndroidSchedulers.mainThread(),
+                        new UserRepository(
+                                new FirebaseUserRepository()
+                        ))
+        );
 
         presenter.setView(this);
 
@@ -126,7 +134,9 @@ public class LoginActivity extends BaseActivity implements
     @OnClick(R.id.btnLogIn)
     @Override
     public void logIn() {
-        validator.validate();
+        Crashlytics.log("Crash de prueba");
+        Crashlytics.getInstance().crash();
+        //validator.validate();
     }
 
     @Override
@@ -139,6 +149,13 @@ public class LoginActivity extends BaseActivity implements
     public void gotoSignUp() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void showMessageEmailLinkSent() {
+        Snackbar.make(this.findViewById(android.R.id.content),
+                R.string.message_email_link_sent,
+                Snackbar.LENGTH_LONG).show();
     }
 
     @Override

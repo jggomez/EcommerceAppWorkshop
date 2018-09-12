@@ -29,7 +29,7 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public Observable<User> logInFacebook(String token) {
+    public Observable<User> logInCrendentials(String token) {
         return firebaseUserRepository.logInCredential(token)
                 .map(firebaseUser -> {
                     User user = new User();
@@ -37,5 +37,10 @@ public class UserRepository implements IUserRepository {
                     user.setNames(firebaseUser.getDisplayName());
                     return user;
                 });
+    }
+
+    @Override
+    public Observable<Boolean> logInLinkEmail(String email) {
+        return firebaseUserRepository.logInLinkEmail(email);
     }
 }

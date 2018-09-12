@@ -1,5 +1,6 @@
 package co.devhack.appfirebaseworkshop.repository.user;
 
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,6 +51,28 @@ public class FirebaseUserRepository {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         emitter.onNext(task.getResult().getUser());
+                        emitter.onComplete();
+                    } else {
+                        emitter.onError(task.getException());
+                    }
+                }));
+    }
+
+    public Observable<Boolean> logInLinkEmail(String email) {
+
+        ActionCodeSettings actionCodeSettings =
+                ActionCodeSettings.newBuilder()
+                        .setHandleCodeInApp(true)
+                        .setAndroidPackageName(
+                                "co.devhack.appfirebaseworkshop",
+                                true, /* installIfNotAvailable */
+                                "23"    /* minimumVersion */)
+                        .build();
+
+        return Observable.create(emitter -> auth.sendSignInLinkToEmail(email, actionCodeSettings)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        emitter.onNext(true);
                         emitter.onComplete();
                     } else {
                         emitter.onError(task.getException());

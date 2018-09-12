@@ -11,6 +11,8 @@ public interface IUserRepository {
 
     Observable<User> logIn(String email, String password);
 
-    Observable<User> logInFacebook(String token);
+    Observable<User> logInCrendentials(String token);
+
+    Observable<Boolean> logInLinkEmail(String email);
 
 }
