@@ -1,4 +1,4 @@
-package co.devhack.appfirebaseworkshop.view.activities;
+package co.devhack.appfirebaseworkshop.view.activities.base;
 
 public interface IView {
 

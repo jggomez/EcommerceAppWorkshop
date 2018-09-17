@@ -1,4 +1,4 @@
-package co.devhack.appfirebaseworkshop.view.activities;
+package co.devhack.appfirebaseworkshop.view.activities.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,10 +13,11 @@ import com.mobsandgeeks.saripaar.ValidationError;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import co.devhack.appfirebaseworkshop.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    protected Toolbar toolbar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,10 +37,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void setToolbar() {
-        /*toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-        }*/
+        }
     }
 
     public void validacionFallo(List<ValidationError> errors) {

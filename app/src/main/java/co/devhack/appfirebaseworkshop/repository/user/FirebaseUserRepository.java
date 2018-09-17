@@ -5,13 +5,42 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import co.devhack.appfirebaseworkshop.domain.model.User;
 import io.reactivex.Observable;
 
 public class FirebaseUserRepository {
 
-    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private FirebaseAuth auth;
+    private final FirebaseFirestore db;
+
+    public FirebaseUserRepository() {
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+    }
+
+    public Observable<String> insertUser(User user) {
+
+        return Observable.create(emitter -> {
+
+            try {
+                db.collection("users").add(user)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                emitter.onNext(task.getResult().getId());
+                                emitter.onComplete();
+                            } else {
+                                emitter.onError(task.getException());
+                            }
+                        });
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+
+
+        });
+    }
 
     public Observable<Boolean> createUser(User user) {
 

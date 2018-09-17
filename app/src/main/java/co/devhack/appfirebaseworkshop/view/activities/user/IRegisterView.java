@@ -1,7 +1,6 @@
 package co.devhack.appfirebaseworkshop.view.activities.user;
 
-import co.devhack.appfirebaseworkshop.domain.user.CreateUser;
-import co.devhack.appfirebaseworkshop.view.activities.IView;
+import co.devhack.appfirebaseworkshop.view.activities.base.IView;
 
 public interface IRegisterView extends IView {
 

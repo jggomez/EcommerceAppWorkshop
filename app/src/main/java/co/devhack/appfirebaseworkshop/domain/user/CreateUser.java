@@ -6,7 +6,7 @@ import co.devhack.appfirebaseworkshop.domain.repository.IUserRepository;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 
-public class CreateUser extends UseCase<Boolean> {
+public class CreateUser extends UseCase<String> {
 
     private final IUserRepository userRepository;
     private User user;
@@ -23,7 +23,16 @@ public class CreateUser extends UseCase<Boolean> {
 
 
     @Override
-    protected Observable<Boolean> crearObservableCasoUso() {
-        return userRepository.createUser(this.user);
+    protected Observable<String> crearObservableCasoUso() {
+        return userRepository.createUser(this.user)
+                .flatMap(result -> {
+
+                    if (result) {
+                        return userRepository.insertUser(this.user);
+                    }
+
+                    return Observable.error(new Exception("User can't create"));
+                });
+
     }
 }

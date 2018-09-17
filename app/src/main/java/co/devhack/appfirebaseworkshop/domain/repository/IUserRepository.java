@@ -1,7 +1,5 @@
 package co.devhack.appfirebaseworkshop.domain.repository;
 
-import com.facebook.login.widget.LoginButton;
-
 import co.devhack.appfirebaseworkshop.domain.model.User;
 import io.reactivex.Observable;
 
@@ -14,5 +12,7 @@ public interface IUserRepository {
     Observable<User> logInCrendentials(String token);
 
     Observable<Boolean> logInLinkEmail(String email);
+
+    Observable<String> insertUser(User user);
 
 }

@@ -43,4 +43,9 @@ public class UserRepository implements IUserRepository {
     public Observable<Boolean> logInLinkEmail(String email) {
         return firebaseUserRepository.logInLinkEmail(email);
     }
+
+    @Override
+    public Observable<String> insertUser(User user) {
+        return firebaseUserRepository.insertUser(user);
+    }
 }

@@ -20,7 +20,7 @@ import co.devhack.appfirebaseworkshop.domain.user.CreateUser;
 import co.devhack.appfirebaseworkshop.repository.user.FirebaseUserRepository;
 import co.devhack.appfirebaseworkshop.repository.user.UserRepository;
 import co.devhack.appfirebaseworkshop.util.Util;
-import co.devhack.appfirebaseworkshop.view.activities.BaseActivity;
+import co.devhack.appfirebaseworkshop.view.activities.base.BaseActivity;
 import co.devhack.appfirebaseworkshop.view.presenter.user.UserPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

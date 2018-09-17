@@ -1,6 +1,6 @@
 package co.devhack.appfirebaseworkshop.view.presenter;
 
-import co.devhack.appfirebaseworkshop.view.activities.IView;
+import co.devhack.appfirebaseworkshop.view.activities.base.IView;
 
 public class Presenter<T extends IView> {
 

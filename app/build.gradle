@@ -46,10 +46,17 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
 
+    //Picasso
+    implementation "com.squareup.picasso:picasso:$rootProject.ext.picasso"
+
     //Firebase
     implementation "com.google.firebase:firebase-auth:$rootProject.ext.firebaseAuth"
     implementation "com.google.firebase:firebase-core:$rootProject.ext.FirebaseCore"
     implementation "com.crashlytics.sdk.android:crashlytics:$rootProject.ext.crashlytics"
+    implementation "com.google.firebase:firebase-firestore:$rootProject.ext.firestore"
+    implementation "com.google.firebase:firebase-storage:$rootProject.ext.firebaseStorage"
+    implementation 'com.google.firebase:firebase-config:16.0.0'
+
 
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:$rootProject.ext.lifecycle_version"

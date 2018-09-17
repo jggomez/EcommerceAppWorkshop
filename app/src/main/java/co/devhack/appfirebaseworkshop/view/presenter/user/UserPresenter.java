@@ -38,10 +38,10 @@ public class UserPresenter extends Presenter<IRegisterView> {
     }
 
 
-    private class UserObserver extends UseCaseObserver<Boolean> {
+    private class UserObserver extends UseCaseObserver<String> {
 
         @Override
-        public void onNext(Boolean successful) {
+        public void onNext(String idUser) {
             getView().showSendVerificationEmail();
             getView().goLogIn();
         }
