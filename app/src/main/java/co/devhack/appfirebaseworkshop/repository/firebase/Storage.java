@@ -12,7 +12,7 @@ public class Storage {
 
     private static StorageReference mStorageRef;
 
-    public static Observable<String> addImage(String path, String uri, String nameFile) {
+    public static Observable<String> addImage(String path, Uri uri, String nameFile) {
 
         return Observable.create(emitter -> {
             try {
@@ -22,10 +22,11 @@ public class Storage {
                 mStorageRef = FirebaseStorage.getInstance().getReference();
 
                 StorageReference riversRef = mStorageRef.child(path).child(nameFile);
-                riversRef.putFile(Uri.parse(uri))
-                        .addOnSuccessListener(taskSnapshot -> {
-                            Uri downloadUrl = riversRef.getDownloadUrl().getResult();
-                            emitter.onNext(String.valueOf(downloadUrl));
+                riversRef.putFile(uri)
+                        .continueWithTask(task -> riversRef.getDownloadUrl())
+                        .addOnCompleteListener(task -> {
+                            Uri downloadUrl = task.getResult();
+                            emitter.onNext(downloadUrl.toString());
                             emitter.onComplete();
                         })
                         .addOnFailureListener(exception -> {

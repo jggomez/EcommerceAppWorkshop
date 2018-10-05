@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void validacionFallo(List<ValidationError> errors) {
+    public void validationFailed(List<ValidationError> errors) {
         for (ValidationError error : errors) {
             View view = error.getView();
             String message = error.getCollatedErrorMessage(this);

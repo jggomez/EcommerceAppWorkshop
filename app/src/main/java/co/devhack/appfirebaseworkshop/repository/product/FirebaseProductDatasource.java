@@ -1,12 +1,20 @@
 package co.devhack.appfirebaseworkshop.repository.product;
 
+import android.net.Uri;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import co.devhack.appfirebaseworkshop.domain.model.Product;
+import co.devhack.appfirebaseworkshop.repository.firebase.Storage;
 import io.reactivex.Observable;
 
 public class FirebaseProductDatasource {
@@ -85,7 +93,15 @@ public class FirebaseProductDatasource {
         return Observable.create(emitter -> {
 
             try {
-                db.collection("products").add(product)
+
+                Map<String, Object> productAdd = new HashMap<>();
+                productAdd.put("date", product.getDate());
+                productAdd.put("description", product.getDescription());
+                productAdd.put("name", product.getName());
+                productAdd.put("price", product.getPrice());
+                productAdd.put("urlImage", product.getUrlImage());
+
+                db.collection("products").add(productAdd)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 emitter.onNext(task.getResult().getId());
@@ -103,4 +119,15 @@ public class FirebaseProductDatasource {
 
     }
 
+    public Observable<String> uploadImage(Uri uri) {
+        String uuid = UUID.randomUUID().toString();
+        final String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        final String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+
+        String nameImage = uuid + "_" + timeStamp;
+        String folderImages = "appImages" + date;
+
+        return Storage.addImage(folderImages, uri, nameImage);
+
+    }
 }

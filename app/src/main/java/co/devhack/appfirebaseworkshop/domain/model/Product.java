@@ -1,5 +1,9 @@
 package co.devhack.appfirebaseworkshop.domain.model;
 
+import android.net.Uri;
+
+import com.google.firebase.firestore.Exclude;
+
 public class Product {
 
     private String id;
@@ -8,6 +12,9 @@ public class Product {
     private String date;
     private double price;
     private String urlImage;
+
+    @Exclude
+    private Uri uriImage;
 
     public Product() {
 
@@ -19,6 +26,14 @@ public class Product {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public Uri getUriImage() {
+        return uriImage;
+    }
+
+    public void setUriImage(Uri uriImage) {
+        this.uriImage = uriImage;
     }
 
     public String getId() {

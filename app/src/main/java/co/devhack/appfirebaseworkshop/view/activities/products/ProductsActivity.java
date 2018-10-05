@@ -1,6 +1,7 @@
 package co.devhack.appfirebaseworkshop.view.activities.products;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,11 +12,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import butterknife.BindView;
+import butterknife.OnClick;
 import co.devhack.appfirebaseworkshop.R;
 import co.devhack.appfirebaseworkshop.repository.product.ProductsLiveData;
 import co.devhack.appfirebaseworkshop.view.activities.adapter.ProductAdapter;
 import co.devhack.appfirebaseworkshop.view.activities.base.BaseActivity;
+import co.devhack.appfirebaseworkshop.view.activities.user.LoginActivity;
 import co.devhack.appfirebaseworkshop.view.viewmodel.ProductsViewModel;
 
 public class ProductsActivity extends BaseActivity
@@ -58,6 +63,12 @@ public class ProductsActivity extends BaseActivity
 
     }
 
+    @OnClick(R.id.fabNewProduct)
+    public void clickNewProduct() {
+        Intent intent = new Intent(this, CreateProductActivity.class);
+        startActivity(intent);
+    }
+
     private void initializeAdaper() {
         adapter = new ProductAdapter();
     }
@@ -96,7 +107,11 @@ public class ProductsActivity extends BaseActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_signout) {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
             return true;
         }
 
@@ -109,17 +124,9 @@ public class ProductsActivity extends BaseActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_create_product) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_signout) {
 
         }
 

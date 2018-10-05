@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.crashlytics.android.Crashlytics;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -30,6 +28,7 @@ import co.devhack.appfirebaseworkshop.repository.user.FirebaseUserRepository;
 import co.devhack.appfirebaseworkshop.repository.user.UserRepository;
 import co.devhack.appfirebaseworkshop.util.Util;
 import co.devhack.appfirebaseworkshop.view.activities.base.BaseActivity;
+import co.devhack.appfirebaseworkshop.view.activities.products.ProductsActivity;
 import co.devhack.appfirebaseworkshop.view.presenter.user.LogInPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -134,14 +133,14 @@ public class LoginActivity extends BaseActivity implements
     @OnClick(R.id.btnLogIn)
     @Override
     public void logIn() {
-        Crashlytics.log("Crash de prueba");
-        Crashlytics.getInstance().crash();
-        //validator.validate();
+        validator.validate();
     }
 
     @Override
     public void gotoProducts() {
-        Toast.makeText(this, "Ir a otra actividad", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ProductsActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @OnClick(R.id.btnSignUp)
@@ -201,7 +200,7 @@ public class LoginActivity extends BaseActivity implements
 
     @Override
     public void onValidationFailed(List<ValidationError> errors) {
-        validacionFallo(errors);
+        validationFailed(errors);
     }
 
     @Override

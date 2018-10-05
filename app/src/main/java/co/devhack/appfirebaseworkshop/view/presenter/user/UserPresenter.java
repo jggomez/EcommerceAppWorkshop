@@ -3,6 +3,7 @@ package co.devhack.appfirebaseworkshop.view.presenter.user;
 import co.devhack.appfirebaseworkshop.domain.UseCaseObserver;
 import co.devhack.appfirebaseworkshop.domain.model.User;
 import co.devhack.appfirebaseworkshop.domain.user.CreateUser;
+import co.devhack.appfirebaseworkshop.util.UtilAnalytics;
 import co.devhack.appfirebaseworkshop.view.activities.user.IRegisterView;
 import co.devhack.appfirebaseworkshop.view.presenter.Presenter;
 

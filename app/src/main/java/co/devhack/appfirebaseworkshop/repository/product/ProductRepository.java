@@ -24,7 +24,11 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public Observable<String> addProduct(Product product) {
-        return firebaseProductDatasource.addProduct(product);
+        return firebaseProductDatasource.uploadImage(product.getUriImage())
+                .flatMap(urlDownloadImage -> {
+                    product.setUrlImage(urlDownloadImage);
+                    return firebaseProductDatasource.addProduct(product);
+                });
     }
 
     @Override

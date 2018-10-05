@@ -29,5 +29,10 @@
     <string name="lbl_product_description">Product Description</string>
     <string name="lbl_product_price">Product Price $$</string>
     <string name="lbl_create_product">Save Product</string>
+    <string name="lbl_add_product">Crear Producto</string>
+    <string name="lbl_signout">Sign Out</string>
+    <string name="lbl_image_mandatory">Image Mandatory</string>
+    <string name="lbl_fetch_failed">Fetch Failed</string>
+    <string name="lbl_cant_create_products">it is not possible to create products</string>
 
 </resources>
